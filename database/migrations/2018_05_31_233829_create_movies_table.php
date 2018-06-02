@@ -34,7 +34,7 @@ class CreateMoviesTable extends Migration
             $table->foreign('country_id')->references('id')->on('countries');
 
             $table->integer('gender_id')->unsigned();//Género
-            $table->foreign('gender_id')->references('id')->on('Genders');
+            $table->foreign('gender_id')->references('id')->on('genders');
 
             $table->timestamps();
         });
