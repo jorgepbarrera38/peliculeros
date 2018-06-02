@@ -103,12 +103,113 @@
         </div>
       </div>
     </header>
-    <!-- end header -->
-    
+    <!-- end header 
+    <section id="inner-headline">
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <div class="inner-heading">
+                <ul class="breadcrumb">
+                  
+                </ul>
+              <h2>asdasdas</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>-->
 
     <section id="content">
       <div class="container">
-        @yield('content')
+        <div class="row">
+            <div class="span4">
+
+                <aside class="left-sidebar">
+    
+                  <div class="widget">
+                    <form action="" method="GET">
+                      <div class="input-append">
+                        <input name="movie" value="{{ request('movie') }}" class="span2" id="appendedInputButton" type="text" placeholder="Escribe aquí">
+                        <button class="btn btn-theme" type="submit">Buscar</button>
+                      </div>
+                    </form>
+                  </div>
+    
+                  <div class="widget">
+    
+                    <h5 class="widgetheading">Géneros</h5>
+    
+                    <ul class="cat">
+                      @foreach($genders as $gender)
+                        <li>
+                          <i class="icon-angle-right"></i> <a style="cursor:pointer" onclick="getElementById('gender-{{ $gender->id }}').submit()">{{ $gender->name }}</a><span> ({{ $gender->movies->count() }})</span>
+                        </li>
+                      <form action="{{ route('home.index') }}" method="GET" id="gender-{{ $gender->id }}" style="display:none">
+                              <input type="text" name="gender" value="{{ $gender->slug }}">
+                          </form>
+                      @endforeach
+                    </ul>
+                  </div>
+    
+                  <div class="widget">
+                    <div class="tabs">
+                      <ul class="nav nav-tabs bold">
+                        <li class="active"><a href="#one" data-toggle="tab"><i class="icon-star"></i> Recomendadas</a></li>
+                        <li><a href="#two" data-toggle="tab">Recent</a></li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="one">
+                          <ul class="popular">
+                            @foreach($movies_recommendeds as $movies_recommended)
+                            <li>
+                              <img src="{{ asset($movies_recommended->image) }}" width="65" alt="" class="thumbnail pull-left">
+                              <p><a href="{{ route('home.show', $movies_recommended->slug) }}">{{ $movies_recommended->name }}</a></p>
+                              <span>{{ $movies_recommended->gender->name }}</span>
+                            </li>
+                            @endforeach
+                          </ul>
+                        </div>
+                        <div class="tab-pane" id="two">
+                          <ul class="recent">
+                            <li>
+                              <p><a href="#">Dorlorem ipsum et mea dolor sit amet</a></p>
+                            </li>
+                            <li>
+                              <p><a href="#">Fierent adipisci iracundia est ei, usu timeam persius ea</a></p>
+                            </li>
+                            <li>
+                              <p><a href="#">Usu ea justo malis, pri quando everti electram ei</a></p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+    
+                  <!--<div class="widget">
+    
+                    <h5 class="widgetheading">Video widget</h5>
+                    <div class="video-container">
+                      <iframe src="http://player.vimeo.com/video/30585464?title=0&amp;byline=0">			</iframe>
+                    </div>
+                  </div>-->
+  
+                  <div class="widget">
+    
+                    <h5 class="widgetheading">Text widget</h5>
+                    <p>
+                      Lorem ipsum dolor sit amet, quo everti torquatos rationibus an, graeci splendide mel cu. Sed ad vidisse eruditi maluisset, et duo mazim placerat adipiscing.
+                    </p>
+    
+                  </div>
+                </aside>
+              </div>
+            <div class="span8">
+              @yield('content')
+            </div>
+       
+            </div>
       </div>
     </section>
 

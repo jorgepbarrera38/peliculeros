@@ -18,13 +18,19 @@ class PageController extends Controller
         $movie_buscar = request('movie'); 
         $gender_buscar = request('gender');
         $genders = Gender::orderBy('name')->get();
-        //$movies = Movie::movie($movie_buscar)->gender($gender_buscar)->paginate(16);
+        $movies_recommendeds = Movie::inRandomOrder()->take(3)->get();
         $movies = Movie::movie($movie_buscar)->whereHas('gender', function($query)use($gender_buscar){
             if ($gender_buscar){
                 $query->where('slug', $gender_buscar);
             }
         })->paginate(16);
-        return view('page.home',compact('movies', 'genders'));
+        return view('page.home',compact('movies', 'genders', 'movies_recommendeds'));
+    }
+
+    public function contact(){
+        $movies_recommendeds = Movie::inRandomOrder()->take(3)->get();
+        $genders = Gender::orderBy('name')->get();
+        return view('page.contact', compact('genders', 'movies_recommendeds'));
     }
 
     /**
@@ -56,8 +62,10 @@ class PageController extends Controller
      */
     public function show($slug)
     {
+        $movies_recommendeds = Movie::inRandomOrder()->take(3)->get();
+        $genders = Gender::orderBy('name')->get();
         $movie = Movie::where('slug', $slug)->first();
-        return view('page.show', compact('movie'));
+        return view('page.show', compact('movie', 'genders', 'movies_recommendeds'));
     }
 
     /**
