@@ -237,16 +237,11 @@
           </div>
           <div class="span4">
             <div class="widget">
-              <h5 class="widgetheading">Déjame un mensaje</h5>
+              <h5 class="widgetheading">Sígueme en redes</h5>
               <p>
-                ¿Hay alguna película que quieres que subamos? ¿Cual?
+                  <a href="https://www.facebook.com/peliculerosguaviare2018" target="_blank" class="btn btn-primary"><i class="icon-facebook "></i> Facebook</a>
+                  <a href="https://www.youtube.com/channel/UCzpdQRnED_9wolYTXUbxO4w" target="_blank" class="btn btn-danger"><i class="icon-play "></i> YouTube</a>
               </p>
-              <form class="subscribe">
-                <div class="input-append">
-                  <input class="span2" id="appendedInputButton" type="text">
-                  <button class="btn btn-theme" type="submit">Enviar</button>
-                </div>
-              </form>
             </div>
           </div>
         </div>

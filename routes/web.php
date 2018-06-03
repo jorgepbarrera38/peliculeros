@@ -13,6 +13,7 @@
 Route::redirect('/', 'home');
 Route::resource('/home', 'PageController');
 Route::get('contact', 'PageController@contact')->name('contact');
+Route::resource('comments', 'CommentController');
 
 Route::resource('administration', 'AdministrationController')->middleware('auth');
 Route::resource('genders', 'GenderController')->middleware('auth');

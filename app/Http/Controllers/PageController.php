@@ -13,6 +13,10 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        \Carbon\Carbon::setLocale('es');
+    }
+
     public function index()
     {
         $movie_buscar = request('movie'); 

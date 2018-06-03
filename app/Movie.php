@@ -35,7 +35,8 @@ class Movie extends Model
     public function scopeMovie($query, $movie){
         $query->where('name', 'LIKE','%'.$movie.'%');
     }
-    public function scopeGender($query, $gender){
-        
+    public function comments(){
+        return $this->hasMany('App\Comment');
     }
+
 }
