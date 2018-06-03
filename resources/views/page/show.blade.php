@@ -56,7 +56,7 @@
             <div class="comment-area">
 
               <h4>{{ $movie->comments->count() }} Comentarios</h4>
-              @foreach($movie->comments as $comment)
+              @foreach($movie->comments()->latest()->get() as $comment)
                 <div class="media">
                   <a href="#" class="pull-left"><img src="img/avatar.png" alt="" class="img-circle"></a>
                   <div class="media-body">

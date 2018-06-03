@@ -21,6 +21,8 @@ Route::resource('countries', 'CountryController')->middleware('auth');
 Route::resource('directors', 'DirectorController')->middleware('auth');
 Route::resource('movies', 'MovieController')->middleware('auth');
 
-Auth::routes();
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
 
 
